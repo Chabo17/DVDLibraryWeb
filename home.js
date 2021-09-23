@@ -26,9 +26,9 @@ function loadDvds() {
                 var notes = contact.notes;
 
                 
-                
+                // <!--- need on clicks --->
                 var row = '<tr>';
-                    row += '<td>' + title + '</td>';
+                    row += '<td><a onclick = "showDvdInfo('+id+')">' + title + '</a></td>';
                     row += '<td>' + releaseYear + '</td>';
                     row += '<td>' + director + '</td>';
                     row += '<td>' + rating + '</td>';
