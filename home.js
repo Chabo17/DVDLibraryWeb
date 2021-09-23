@@ -1,6 +1,10 @@
 $(document).ready(function () {
     loadDvds();
     addDvd();
+    $('#topButton').click(function(){
+        $('#dvdTableDiv').hide(); 
+        $('#addDvdDiv').show();
+    });
 });
 //http://dvd-library.us-east-1.elasticbeanstalk.com
 
@@ -83,3 +87,4 @@ function addDvd() {
         })
     });
 }
+
