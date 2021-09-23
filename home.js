@@ -2,7 +2,8 @@ $(document).ready(function () {
     loadDvds();
     addDvd();
     $('#topButton').click(function(){
-        $('#dvdTableDiv').hide(); 
+        $('#dvdTableDiv').hide();
+        $('#dvdInfoDiv').hide();  
         $('#addDvdDiv').show();
     });
 });
@@ -28,7 +29,7 @@ function loadDvds() {
                 
                 // <!--- need on clicks --->
                 var row = '<tr>';
-                    row += '<td><a onclick = "showDvdInfo('+id+')">' + title + '</a></td>';
+                    row += '<td><a href="#" onClick="showDvdInfo(' + id + ');">' + title + '</a></td>';
                     row += '<td>' + releaseYear + '</td>';
                     row += '<td>' + director + '</td>';
                     row += '<td>' + rating + '</td>';
@@ -85,6 +86,27 @@ function addDvd() {
                 .text('Error calling web service. Please try again later.')); 
            }
         })
+    });
+}
+
+function showDvdInfo(dvdId) {
+    $.ajax({
+        type: 'GET',
+        url: 'http://dvd-library.us-east-1.elasticbeanstalk.com/dvd/' + dvdId,
+        success: function(dvd) {
+                $('#titleInfo').innerHTML(dvd.title);
+                $('#releaseYearInfo').innerHTML(dvd.releaseYear);
+                $('#directorInfo').innerHTML(dvd.director);
+                $('#ratingInfo').innerHTML(dvd.rating);
+                $('#notesInfo').innerHTML(dvd.notes);
+        },
+        error: function() {
+            alert("failed dvd info");
+            /*$('#errorMessages')
+                .append($('<li>')
+                .attr({class: 'list-group-item list-group-item-danger'})
+                .text('Error calling web service. Please try again later.'));*/
+        }
     });
 }
 
