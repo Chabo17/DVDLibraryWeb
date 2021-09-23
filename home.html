@@ -17,7 +17,7 @@
 
     <div class="row">
       <!-- Add Button -->
-      <div class="col-md-6"> 
+      <div class="col-md-3"> 
            <button type="button"
               id="addDvdButton"
               class="btn btn-primary">
@@ -34,7 +34,7 @@
           </button>
       </div>
 
-
+      <!--  Button -->
       <div class="dropdown col-md-3">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown button
@@ -46,7 +46,33 @@
         </div>
       </div>
 
+      <div class="col-md-3">
+        <input type="text" name="name" id="boxInput" >
+      </div>
+
     </div>
+
+    <hr> 
+
+          <!--container for Contact List table -->
+          <div id="contactTableDiv">
+              <h2>My Contacts</h2> 
+              <table id="contactTable" class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th width="40%">Title</th>
+                          <th width="30%">Release date</th>
+                          <th width="15%">Director</th>
+                          <th width="15%">Raiting</th>
+                      </tr>
+                  </thead>
+                  <!-- we will add data rows dynamically to the tbody -->
+                  <tbody id="contentRows"></tbody>
+                  </table> 
+              </div> 
+                  
+
+
 
 
 
