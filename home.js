@@ -1,14 +1,21 @@
 $(document).ready(function () {
     loadDvds();
     addDvd();
+    
+});
+//http://dvd-library.us-east-1.elasticbeanstalk.com
+
+function hideEverything(){
     $('#topButton').click(function(){
         $('#dvdTableDiv').hide();
         $('#dvdInfoDiv').hide();  
         $('#addDvdDiv').show();
     });
-});
-//http://dvd-library.us-east-1.elasticbeanstalk.com
+}
 
+function hideAllDVDS(){
+    $('#dvdTableDiv').hide();
+}
 
 function loadDvds() {
     //clearContactTable();
@@ -90,15 +97,24 @@ function addDvd() {
 }
 
 function showDvdInfo(dvdId) {
+    hideAllDVDS();
+    var contentRows = $('#dvdInfoDiv');
     $.ajax({
         type: 'GET',
         url: 'http://dvd-library.us-east-1.elasticbeanstalk.com/dvd/' + dvdId,
-        success: function(dvd) {
-                $('#titleInfo').innerHTML(dvd.title);
-                $('#releaseYearInfo').innerHTML(dvd.releaseYear);
-                $('#directorInfo').innerHTML(dvd.director);
-                $('#ratingInfo').innerHTML(dvd.rating);
-                $('#notesInfo').innerHTML(dvd.notes);
+        success: function(dvd) {//TODO FIX SPACING
+            $('#dvdInfoDiv').empty();
+
+                 var row = '<div class="row">';
+                    row += '<h1 id="titleInfo" class="offset-md-4 col-md-8">' + dvd.title +'</h1>';
+                    row += '<hr>';
+                    row += '<div id="releaseYearInfo" class="offset-md-4 col-md-8">'+ dvd.releaseYear +' </div>';
+                    row += '<div id="ratingInfo" class="offset-md-4 col-md-8">'+ dvd.rating +'</div>';
+                    row += '<div id="notesInfo" class="offset-md-4 col-md-8">'+dvd.notes+'</div>'
+                    // row += '' BUTTON     
+                    row += '</div>';
+                contentRows.append(row);
+
         },
         error: function() {
             alert("failed dvd info");
