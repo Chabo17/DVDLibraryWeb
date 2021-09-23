@@ -17,16 +17,17 @@ function loadDvds() {
                 var title = contact.title;
                 var releaseYear = contact.releaseYear;
                 var director = contact.director;
-                var raiting = contact.raiting;
+                var rating = contact.rating;
                 var notes = contact.notes;
 
                 
                 
                 var row = '<tr>';
-                    row += '<td>' + name + '</td>';
-                    row += '<td>' + company + '</td>';
-                    row += '<td><button type="button" class="btn btn-info" onclick="showEditForm(' + contactId + ')">Edit</button></td>';
-                    row += '<td><button type="button" class="btn btn-danger" onclick="deleteContact(' + contactId + ')">Delete</button></td>';
+                    row += '<td>' + title + '</td>';
+                    row += '<td>' + releaseYear + '</td>';
+                    row += '<td>' + director + '</td>';
+                    row += '<td>' + rating + '</td>';
+                    row += '<td><a onlcick= "" >Edit</a> | <a onlcick= "">Delete</a></td>'     
                     row += '</tr>';
                 
                 contentRows.append(row);
